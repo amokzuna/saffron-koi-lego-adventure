@@ -19,7 +19,13 @@ npx playwright install chromium   # one-time browser download for e2e
 npm run test:e2e       # Playwright e2e tests (Chromium desktop + Android landscape; includes portrait checks)
 npm run test:e2e:cross # optional: WebKit/Safari, iPhone, Firefox (npx playwright install webkit firefox)
 npm run check          # typecheck + unit tests + production build
+npm run icons          # regenerate the app icons in public/icons/
 ```
+
+## Play it like a mobile game
+The game is an installable web app (PWA). On a phone, open the site and tap **Install App** (Android) or
+**Add to Home Screen** (iPhone/iPad, via Safari's Share menu). It then launches from the home screen full screen,
+works offline, and locks to landscape during levels where the device allows it. See `docs/DEPLOYMENT.md`.
 
 ## Controls
 | Action | Keyboard | Touch |

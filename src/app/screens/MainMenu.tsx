@@ -5,6 +5,7 @@ import { totalStars } from '../../features/progression/progress';
 import { useProgress } from '../../features/progression/ProgressContext';
 import type { Navigate } from '../App';
 import { HeroPreview } from '../components/HeroPreview';
+import { InstallButton } from '../components/InstallButton';
 import { Logo } from '../components/Logo';
 
 interface Props {
@@ -69,6 +70,7 @@ export function MainMenu({ onNavigate, onPlay }: Props) {
           <button className="btn" onClick={() => onNavigate({ screen: 'settings' })}>
             Settings
           </button>
+          <InstallButton />
           <button className="btn" onClick={() => onNavigate({ screen: 'howToPlay' })}>
             How to Play
           </button>

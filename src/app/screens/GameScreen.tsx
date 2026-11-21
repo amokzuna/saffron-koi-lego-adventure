@@ -5,6 +5,7 @@ import { audio } from '../../features/audio/AudioEngine';
 import { useHero } from '../../features/character/HeroContext';
 import { useSettings } from '../../features/settings/SettingsContext';
 import { showTouchControls } from '../../features/settings/settings';
+import { enterGameDisplayMode, leaveGameDisplayMode } from '../../pwa/pwa';
 import { useProgress } from '../../features/progression/ProgressContext';
 import type { GameBridge, GameOverInfo, HudState, LevelResult } from '../../game/bridge/GameBridge';
 import { VirtualControls } from '../../game/input/InputState';
@@ -128,6 +129,13 @@ export function GameScreen({ levelId, onExit, onPlayLevel, onViewEnding }: Props
     }
   }, [status, level.worldId]);
   useEffect(() => () => audio.stopMusic(), []);
+
+  // Touch devices: full screen and landscape while playing, where the browser allows it.
+  useEffect(() => {
+    if (!isTouchDevice) return;
+    void enterGameDisplayMode();
+    return () => leaveGameDisplayMode();
+  }, [isTouchDevice]);
 
   // Live reduced-motion changes (e.g. from the pause menu settings).
   useEffect(() => {

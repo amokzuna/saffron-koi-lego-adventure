@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 /** Cross-browser projects are opt-in (`npm run test:e2e:cross`) because they need extra browser downloads. */
 const crossBrowser = process.env.CROSS_BROWSER === '1';
-const CORE_FLOWS = /(smoke|settings|hero)\.spec\.ts/;
+const CORE_FLOWS = /(smoke|settings|hero|pwa)\.spec\.ts/;
 
 export default defineConfig({
   testDir: './e2e',

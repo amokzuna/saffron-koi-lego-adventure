@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:cross": "CROSS_BROWSER=1 playwright test --project=webkit --project=iphone-landscape --project=firefox",
-    "check": "npm run typecheck && npm test && npm run build"
+    "check": "npm run typecheck && npm test && npm run build",
+    "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "phaser": "^3.90.0",

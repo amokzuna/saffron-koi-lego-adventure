@@ -1389,3 +1389,29 @@ fieldset.field:disabled {
     margin: 0 -18px;
   }
 }
+
+/* ---------- Install (PWA) ---------- */
+
+.btn-install {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  background: #2f7de1;
+  color: #fff;
+  box-shadow: 0 4px 0 #1d5bb5;
+}
+
+.install-steps {
+  margin: 0;
+  padding-left: 1.3em;
+  line-height: 1.8;
+  text-align: left;
+}
+
+/* Installed app: respect notches and the home indicator. */
+@media (display-mode: fullscreen), (display-mode: standalone) {
+  body {
+    background: var(--c-bg);
+  }
+}
