@@ -1,0 +1,77 @@
+import type { LevelDefinition } from '../../../game/levels/types';
+import { LEVEL_HEIGHT, ON_GROUND, brick, coinArc, coins, deco, ground, platform, sign } from '../helpers';
+
+/** 2 — Mushroom Valley: introduces walking enemies (first one on open flat ground) and raised terrain. */
+export const LEVEL_2: LevelDefinition = {
+  id: 'w1-2',
+  name: 'Mushroom Valley',
+  worldId: 1,
+  theme: 'grassland',
+  width: 130,
+  height: LEVEL_HEIGHT,
+  spawn: { x: 3, y: ON_GROUND },
+  goal: { x: 126, y: ON_GROUND },
+  parTimeMs: 70_000,
+  solids: [
+    ground(0, 20),
+    ground(20, 10, 12), // raised plateau
+    ground(30, 15),
+    ground(48, 22),
+    ground(70, 8, 11), // high plateau
+    ground(78, 22),
+    ground(103, 27),
+    platform(8, 10, 4),
+    platform(34, 10, 3),
+    platform(52, 10, 3),
+    platform(57, 7, 4),
+    platform(84, 10, 4),
+    platform(110, 11, 3),
+  ],
+  collectibles: [
+    ...coins('start', 5, ON_GROUND, 3),
+    ...coins('safe-route', 8, 9, 4),
+    ...coins('plateau', 21, 11, 8),
+    ...coinArc('gap-1', 44, 12, 5),
+    ...coins('mid', 52, 9, 3),
+    ...coins('high', 57, 6, 2),
+    ...coins('cliff', 71, 10, 6),
+    ...coins('valley', 80, ON_GROUND, 4),
+    ...coinArc('gap-2', 99, 12, 5),
+    ...coins('finish', 115, ON_GROUND, 6),
+    brick('w1-2-brick-a', 25, 7),
+    brick('w1-2-brick-b', 59, 6),
+    brick('w1-2-brick-c', 111, 7),
+  ],
+  checkpoints: [
+    { id: 'w1-2-cp-1', x: 50, y: ON_GROUND },
+    { id: 'w1-2-cp-2', x: 79, y: ON_GROUND },
+  ],
+  hazards: [],
+  enemies: [
+    { id: 'w1-2-walker-1', kind: 'walker', x: 14, y: ON_GROUND, patrolMinX: 10, patrolMaxX: 18 },
+    { id: 'w1-2-walker-2', kind: 'walker', x: 38, y: ON_GROUND, patrolMinX: 31, patrolMaxX: 44 },
+    { id: 'w1-2-walker-3', kind: 'walker', x: 60, y: ON_GROUND, patrolMinX: 55, patrolMaxX: 68 },
+    { id: 'w1-2-walker-4', kind: 'walker', x: 74, y: 10, patrolMinX: 71, patrolMaxX: 77 },
+    { id: 'w1-2-walker-5', kind: 'walker', x: 92, y: ON_GROUND, patrolMinX: 84, patrolMaxX: 99 },
+    { id: 'w1-2-flyer-1', kind: 'flyer', x: 117, y: 12, patrolMinX: 108, patrolMaxX: 122 },
+  ],
+  powerUps: [
+    { id: 'w1-2-super-jump', kind: 'superJump', x: 35, y: 9 },
+    { id: 'w1-2-heart', kind: 'extraHeart', x: 86, y: 9 },
+  ],
+  movingPlatforms: [],
+  decorations: [
+    sign(5, 'Jump on enemies to defeat them!'),
+    deco('mushroom', 2),
+    deco('mushroom', 17),
+    deco('mushroom', 28, 11),
+    deco('mushroom', 46),
+    deco('bush', 64),
+    deco('mushroom', 69),
+    deco('mushroom', 76, 10),
+    deco('flower', 82),
+    deco('mushroom', 97),
+    deco('mushroom', 105),
+    deco('bush', 123),
+  ],
+};
